@@ -14,15 +14,21 @@ angular.module('shortly.services', [])
     });
   };
 
-  // var getLinks = function($http){
+  var addLink = function(){
+    return $http({
+      method: 'POST',
+      url: '/api/links',
+      data: 'something'
+    })
+    .then(function (resp) {
+      return resp.data;
+    });
+  };
 
-  // };
-  // var test = function(){
-  //   return {name: "Neil"};
-  // };
 
   return {
-    getLinks : getLinks
+    getLinks : getLinks,
+    addLink : addLink
   };
 })
 .factory('Auth', function ($http, $location, $window) {
