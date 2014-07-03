@@ -8,19 +8,21 @@ angular.module('shortly.services', [])
       method: 'GET',
       url: '/api/links'
     }).then(function(resp) {
-      return 'dh';
+      return resp.data;
     }).catch(function(error){
-      console.log("Errors ",error);
+      console.log("Errors ", error);
     });
   };
 
-  var test = function(){
-    return {name: "Neil"};
-  };
+  // var getLinks = function($http){
+
+  // };
+  // var test = function(){
+  //   return {name: "Neil"};
+  // };
 
   return {
-    getLinks : getLinks,
-    test : test
+    getLinks : getLinks
   };
 })
 .factory('Auth', function ($http, $location, $window) {
