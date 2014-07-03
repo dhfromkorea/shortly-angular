@@ -1,9 +1,13 @@
 <div id='signup'>
   <h1>signup</h1>
   <form name="signupForm" ng-submit='signup()'>
-    <input type='text' ng-model='user.username'>
-    <input type="password" ng-model='user.password'>
+    <input type='text' name="username" ng-minlength=6 ng-model='user.username'>
+    <input type="password" name="password" ng-minlength=6 ng-model='user.password'>
     <button>signup</button>
   </form>
+  <div clsss="validation">
+    <small class="error" ng-show="signupForm.username.$dirty && signupForm.username.$invalid">username error</small>
+    <small ng-show="signupForm.password.$dirty && signupForm.passport.$invalid">password error</small>
+  </div>
   <a href="#/signin">Already have an account? Signin ...</a>
 </div>
