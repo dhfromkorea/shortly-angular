@@ -16,12 +16,11 @@ angular.module('shortly', [
         controller: 'AuthController'
       })
       .when('/links', {
-        templateUrl: 'app/links/links.html',
-        controller: 'LinksController'
+        templateUrl: 'app/links/links.html'
+        // controller: 'LinksController'
       })
       .when('/shorten', {
-        templateUrl: 'app/shorten/shorten.html',
-        controller: 'ShortenController'
+        templateUrl: 'app/shorten/shorten.html'
       })
       .otherwise({
         redirectTo: '/links'
@@ -67,4 +66,25 @@ angular.module('shortly', [
         });
       }
     });
+  })
+  .directive('displayLinks', function() {
+    return {
+      restrict: 'EA',
+      templateUrl: 'app/links/linksDisplay.html',
+      scope: true,
+      controller: function($scope, Links) {
+          $scope.data = {};
+          $scope.getLinks = Links.getLinks;
+          var init = function() {
+            $scope.getLinks()
+              .then(function(result) {
+                $scope.data.links = result;
+              })
+              .catch(function(error) {
+              console.log("Some Error", error);
+            });
+          };
+          init();
+        }
+    };
   });
