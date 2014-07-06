@@ -71,7 +71,6 @@ angular.module('shortly', [
     return {
       restrict: 'EA',
       templateUrl: 'app/links/linksDisplay.html',
-      scope: true,
       controller: function($scope, Links) {
           $scope.data = {};
           $scope.getLinks = Links.getLinks;
